@@ -1,3 +1,103 @@
-h1 {
-  color: rgb(102, 185, 249);
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, sans-serif;
 }
+
+/* Fundo geral */
+body {
+  background-color: #e8f6f3; /* verde claro */
+  padding: 40px;
+  color: #2c3e50;
+}
+
+/* Título principal */
+h1 {
+  text-align: center;
+  color: #2e8b8b; /* azul esverdeado */
+  margin-bottom: 20px;
+}
+
+/* Subtítulo */
+h2 {
+  margin-top: 30px;
+  color: #2f7f6f;
+}
+
+/* Formulário */
+form {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Label */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+/* Input */
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #b2dfdb;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+/* Botão */
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4db6ac; /* verde água */
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #399c92;
+}
+
+/* Mensagem de erro */
+#mensagemErro {
+  color: #e53935;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+/* Lista de tarefas */
+ul {
+  list-style: none;
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 0;
+}
+
+/* Itens da lista */
+li {
+  background-color: #ffffff;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  border-left: 6px solid #4db6ac;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+/* Detalhe fofo veterinário 🐾 */
+li::before {
+  content: "🐾 ";
+}
+
