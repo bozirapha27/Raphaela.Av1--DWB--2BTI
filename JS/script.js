@@ -17,11 +17,42 @@ document.addEventListener("DOMContentLoaded", function () {
   function renderTarefas() {
     lista.innerHTML = "";
 
-    for (const tarefa of tarefas) {
+    tarefas.forEach((tarefa, index) => {
       const li = document.createElement("li");
-      li.textContent = tarefa;
-      lista.append(li);
-    }
+
+      const span = document.createElement("span");
+      span.textContent = tarefa;
+
+      // botão excluir 🗑️
+      const btnExcluir = document.createElement("button");
+      btnExcluir.textContent = "🗑️";
+      btnExcluir.style.marginLeft = "10px";
+
+      btnExcluir.addEventListener("click", () => {
+        tarefas.splice(index, 1);
+        renderTarefas();
+      });
+
+      // botão editar ✏️
+      const btnEditar = document.createElement("button");
+      btnEditar.textContent = "✏️";
+      btnEditar.style.marginLeft = "10px";
+
+      btnEditar.addEventListener("click", () => {
+        const novoTexto = prompt("Editar tarefa:", tarefa);
+
+        if (novoTexto !== null && novoTexto.trim() !== "") {
+          tarefas[index] = novoTexto.trim();
+          renderTarefas();
+        }
+      });
+
+      li.appendChild(span);
+      li.appendChild(btnEditar);
+      li.appendChild(btnExcluir);
+
+      lista.appendChild(li);
+    });
   }
 
   form.addEventListener("submit", function (event) {
