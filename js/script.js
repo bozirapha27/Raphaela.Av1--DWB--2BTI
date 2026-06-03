@@ -1,4 +1,4 @@
-let todosOsPaises = [];
+﻿let todosOsPaises = [];
 
 async function carregarPaises() {
     const loading = document.getElementById("loading");
@@ -6,7 +6,7 @@ async function carregarPaises() {
     const searchSection = document.getElementById("searchSection");
 
     try {
-        const resposta = await fetch("https://restcountries.com/v3.1/all?fields=name,flags,capital,region,subregion,population,languages,area");
+        const resposta = await fetch("https://restcountries.com/v3.1/all?fields=cca3,name,flags,capital,region,subregion,population,languages,area");
         if (!resposta.ok) {
             throw new Error("Erro ao carregar dados dos países");
         }
@@ -28,6 +28,17 @@ async function carregarPaises() {
         loading.style.display = "none";
         erro.classList.remove("d-none");
     }
+}
+
+function abrirLista() {
+    document.getElementById('homePage').style.display = 'none';
+    document.getElementById('listPage').style.display = 'block';
+    carregarPaises();
+}
+
+function voltarHome() {
+    document.getElementById('listPage').style.display = 'none';
+    document.getElementById('homePage').style.display = 'block';
 }
 
 function formatarNumero(valor) {
@@ -62,7 +73,7 @@ function gerarCartaoPais(pais) {
 
     return `
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <article class="card country-card h-100 shadow-sm">
+            <article class="card country-card h-100 shadow-sm" style="cursor:pointer;" onclick="window.location.href='details.html?code=${pais.cca3}'">
                 <div class="flag-frame">
                     <img src="${flagSrc}" alt="Bandeira de ${pais.name.common}" title="Bandeira de ${pais.name.common}" loading="lazy"
                         onerror="this.onerror=null; this.src='${flagFallback}';">
@@ -116,13 +127,8 @@ function filtrarPaises(valor) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    carregarPaises();
     const searchInput = document.getElementById("searchInput");
     searchInput.addEventListener("input", () => {
         exibirPaises(filtrarPaises(searchInput.value));
     });
 });
-
-
-
-
